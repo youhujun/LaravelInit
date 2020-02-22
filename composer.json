@@ -1,0 +1,27 @@
+{
+    "name": "youhujun/laravel-init",
+    "description": "一个简单的laravel初始化工具包.(A simple laravel initialization kit.)",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "youhujun",
+            "email": "2900976495@qq.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "YouHuJun\\LaravelInit\\": ""
+        }
+    },
+    "extra": {
+        "laravel":{
+            "providers":[
+                "YouHuJun\\LaravelInit\\Providers\\InitServiceProvider"
+            ],
+            "aliases":{
+                "Mysql":"YouHuJun\\LaravelInit\\Facade\\Data\\Mysql"
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<?php
+
+namespace DummyNamespace;
+
+class DummyClassService
+{
+   public function test()
+   {
+       echo "DummyClassService test";
+   }
+}
