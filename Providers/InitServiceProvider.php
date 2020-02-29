@@ -41,7 +41,9 @@ class InitServiceProvider extends ServiceProvider
        {
            //单独发布自定义助手函数
            $this->publishes([
-               __DIR__.'/../Config/helper.php'=>config_path('helper.php')
+               __DIR__.'/../Config/helper.php'=>config_path('helper.php'),
+
+               __DIR__.'/../Config/code.php'=>config_path('code.php')
            ],'help');
 
            //单独发布门面,契约合服务层

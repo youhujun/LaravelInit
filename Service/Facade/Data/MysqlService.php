@@ -59,7 +59,8 @@ class MysqlService
      }
      else
      {
-        $error = ['code'=>-10001,'msg'=>'未传入表名参数'];
+                 
+        $error = code(config('code.mysql.error.90001'));
         return $error;
      }
  
@@ -114,7 +115,7 @@ class MysqlService
      }
      else
      {
-        $error = ['code'=>-10002,'msg'=>'未传入有效数据'];
+        $error = code(config('code.mysql.error.90002'));
         return $error;
      }
      //判断是否获取添加id
@@ -142,7 +143,7 @@ class MysqlService
      }
      else
      {
-        $error = ['code'=>-10006,'msg'=>'未传入有效数据'];
+        $error = code(config('code.mysql.error.90003'));
         return $error;
      }
      //处理是否为更新删除操作
@@ -218,7 +219,7 @@ class MysqlService
      }
      else
      {
-        $error = ['code'=>-10012,'msg'=>"联查参数设置错误"];
+        $error = code(config('code.mysql.error.90011'));
         return $error;
      }
  
@@ -274,7 +275,9 @@ class MysqlService
            }
            else
            {
-              $error = ['code'=>-20001,'msg'=>'where条件参数有误!'];
+               
+               $error = code(config('code.mysql.error.90021'));
+
                return $error;
            }
         }
@@ -298,7 +301,9 @@ class MysqlService
            }
            else
            {
-              $error = ['code'=>-20002,'msg'=>'orWhere条件参数有误!'];
+               
+               $error = code(config('code.mysql.error.90022'));
+             
                return $error;
            }
         }
@@ -315,7 +320,7 @@ class MysqlService
         }
         else
         {
-           $error = ['code'=>-20003,'msg'=>'orWhere条件参数有误!'];
+           $error = code(config('code.mysql.error.90023'));
            return $error;
         }
      }
@@ -327,7 +332,7 @@ class MysqlService
        {  
           if(count($this->whereIn[1])<1)
           {
-            $error = ['code'=>-20005,'msg'=>'whereIn条件参数有误!'];
+            $error = code(config('code.mysql.error.90024'));
             return $error;
           }
           else
@@ -338,7 +343,7 @@ class MysqlService
        }
        else
        {
-          $error = ['code'=>-20004,'msg'=>'whereIn条件参数有误!'];
+          $error = code(config('code.mysql.error.90025'));
           return $error;
        }
      }
@@ -372,24 +377,28 @@ class MysqlService
      {
         if(count($this->data) !== count($this->data,1))
         {
-           $error = ['code'=>-10003,'msg'=>'数据传递格式有误'];
+           $error = code(config('code.mysql.error.90004'));
            return $error;
         }
  
         $res = $query->insertGetId($this->data);
-        $ret = ['code'=>0,'msg'=>'添加成功!','insert_id'=>$res];
+
+        $ret =  code(config('code.mysql.increase'),['insert_id'=>$res]);
+
         if(!$res)
         {
-           $ret = ['code'=>-10004,'msg'=>'添加失败!'];
+           $ret = code(config('code.mysql.error.90005'));
         }
      }
      else
      {
         $res = $query->insert($this->data);
-        $ret = ['code'=>0,'msg'=>'添加成功!'];
+
+        $ret = code(config('code.mysql.increase'));
+
         if(!$res)
         {
-           $ret = ['code'=>-10005,'msg'=>'添加失败!'];
+           $ret = code(config('code.mysql.error.90006'));
         }
      }
  
@@ -425,19 +434,14 @@ class MysqlService
  
      $res = $query->update($this->data);
  
-     $str = "更新";
-     if($this->is_del)
-     {
-        $str = "删除";
-     }
  
      if($res)
      {
-        $ret = ['code'=>0,'msg'=>"{$str}成功!"];
+        $ret = code(config('code.mysql.increase'));
      }
      else
      {
-        $ret = ['code'=>-10007,'msg'=>"{$str}失败!"];
+        $ret = code(config('code.mysql.error.90007'));
      }
  
      return $ret;
@@ -494,18 +498,18 @@ class MysqlService
      {
         //判断是否需要开启子查询
         if(isset($this->has_son)&&$this->has_son == 1)
-        {
-           $ret = ['code'=>0,'msg'=>'查询成功','data'=>$res,'father'=>$father];
+        {  
+           $ret = code(config('code.mysql.update'),['data'=>$res,'father'=>$father]);
         }
         else
         {
-           $ret = ['code'=>0,'msg'=>'查询成功','data'=>$res];
+           $ret = code(config('code.mysql.update'),['data'=>$res]);
         }
  
      }
      else
      {
-        $ret = ['code'=>-10008,'msg'=>'查询失败'];
+        $ret = code(config('code.mysql.error.90008'));
      }
  
      return $ret;
@@ -538,8 +542,7 @@ class MysqlService
      //必须同时具备两个参数才可以清空重置表
      if(!$this->is_yes&&!$this->is_restart)
      {
-        $ret = ['code'=>-10009,'msg'=>'删除失败,缺失必要参数'];
- 
+        $ret = code(config('code.mysql.error.90009')); 
      }
      //清除重置表
      if($this->is_restart&&$this->is_yes)
@@ -550,11 +553,11 @@ class MysqlService
  
          if($status)
          {
-            $ret = ['code'=>0,'msg'=>'重置成功!','status'=>$status];
+            $ret = code(config('code.mysql.restart'),['status'=>$status]);
          }
          else
          {
-            $ret = ['code'=>-10010,'msg'=>'重置失败!','status'=>$status];
+            $ret = code(config('code.mysql.error.90000'),['status'=>$status]);
          }
  
      }
@@ -568,11 +571,11 @@ class MysqlService
  
          if($res)
          {
-            $ret = ['code'=>0,'msg'=>"删除成功!",'numbers'=>$res];
+            $ret = code(config('code.mysql.delete'),['numbers'=>$res]);
          }
          else
          {
-           $ret = ['code'=>-10011,'msg'=>"删除失败!"];
+           $ret = code(config('code.mysql.error.90010')); 
          }
      }
  
@@ -624,7 +627,7 @@ class MysqlService
            }
            else
            {
-              $error = ['code'=>-10013,'msg'=>'联查参数设置错误'];
+              $error = code(config('code.mysql.error.90012')); 
               return $error;
            }
  
@@ -639,20 +642,20 @@ class MysqlService
               }
               else
               {
-                $error = ['code'=>-10014,'msg'=>'联查参数设置错误'];
+               $error = code(config('code.mysql.error.90013')); 
                 return $error;
               }
            }
         }
         else
         {
-           $error = ['code'=>-10015,'msg'=>'联查参数设置错误'];
+           $error = code(config('code.mysql.error.90014')); 
            return $error;
         }
      }
      else
      {
-        $error = ['code'=>-10016,'msg'=>'联查参数设置错误'];
+        $error = code(config('code.mysql.error.90015')); 
         return $error;
      }
  
@@ -674,14 +677,13 @@ class MysqlService
  
      $res = $query->get();
  
- 
      if($res)
      {
-        $ret = ['code'=>0,'msg'=>'查询成功','data'=>$res];
+        $ret = code(config('code.mysql.select'),['data'=>$res]); 
      }
      else
      {
-        $ret = ['code'=>-10017,'msg'=>'联查失败'];
+        $ret = code(config('code.mysql.error.90016')); 
      }
  
      return $ret;

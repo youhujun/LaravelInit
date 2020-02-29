@@ -54,6 +54,25 @@ $ composer require youhujun/laravel-init
 
 #### <span id='3.1.1'>3.1.1执行整体发布命令</span>[返回(return)](#0)
 
+>提示:如果你的laravel版本低于5.5,你需要在laravel应用的`config/app.php`中注册ServiceProvider和Facade
+>
+>Tip: if your laravel is below 5.5, you need to register the ServiceProvider and Facade in `config/app.php` for laravel applications
+>
+>```
+>'providers' => [
+>    // ...
+>   YouHuJun\LaravelInit\Providers\InitServiceProvider::class,
+>]
+>```
+>
+>laravel版本>=5.5的则不用注册,直接看下面文档即可
+>
+>Laravel version >=5.5 does not need to register, just look at the following documents
+
+---
+
+
+
 
 > ```
 > php artisan vendor:publish --provider="YouHuJun\LaravelInit\Providers\InitServiceProvider

@@ -22,6 +22,49 @@
      }
  }
 
+ if(!function_exists('f'))
+ {
+     /**
+      * @description: 过滤字符串中的标签
+      * @param {string}
+      * @return: void
+      */
+     function f($param)
+     {
+         return strip_tags($param);
+     }
+ }
+
+ if(!function_exists('code'))
+ {
+     /**
+      * @description: 请求返回
+      * @param {array} $code ,配置文件code,定义
+      * @param {array} $add,需要手动添加的数据
+      * @return:
+      */
+     function code($code=[],$add=[])
+     {
+         $resArr = [];
+         if(is_null($code)&&is_null($add))
+         {
+            $resArr = [];
+         }
+         else if(is_null($code)&&!is_null($add))
+         {
+            $resArr = $add;
+         }
+         else if(!is_null($code)&&is_null($add))
+         {
+            $resArr = $code;
+         }
+         else
+         {
+            $resArr = array_merge($code,$add);
+         }
+        return  $resArr;
+     }
+ }
 
 /**
  * 请求处理 ++++++++++++++++++++++++++++++++++++++++++
