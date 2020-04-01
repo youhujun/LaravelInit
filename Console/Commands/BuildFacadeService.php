@@ -84,7 +84,7 @@ class BuildFacadeService extends Command
             return $name;
         }
 
-        $name = str_replace('/', '\\', $name);
+        $name = str_replace('/', '\\', $name."Service");
        
         return $this->qualifyClass(
             $this->getDefaultNamespace(trim($rootNamespace, '\\')).'\\'.'Service'.'\\'.'Facade'.'\\'.$name

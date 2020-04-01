@@ -2,10 +2,10 @@
 
 namespace DummyNamespace;
 
-class DummyClassService
+class DummyClass
 {
    public function test()
    {
-       echo "DummyClassService test";
+       echo "DummyClass test";
    }
 }
