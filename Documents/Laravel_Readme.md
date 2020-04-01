@@ -36,7 +36,13 @@ composer install
 
 1 将`.env.example`文件复制,重命名`.env`,windows下无法创建也可以 `touch .env`然后复制`.env.example`内容
 
-2 执行 `php artisan key:generate`生成应用秘钥
+2 执行 
+
+```
+php artisan key:generate
+```
+
+生成应用秘钥
 
 3注意配置
 
@@ -51,6 +57,18 @@ location /
 }
 
 ```
+
+3.3Linux下注意修改文件权限
+
+```
+chmod -R 777 storage
+```
+
+```
+chmod -R 777  bootstrap/cache
+```
+
+
 
 4 apache
 
