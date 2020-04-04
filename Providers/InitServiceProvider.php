@@ -60,6 +60,12 @@ class InitServiceProvider extends ServiceProvider
               __DIR__.'/../Documents'=>base_path('Documents'),
            ],'document');
 
+           //单独发布自定义错误视图
+           $this->publishes([
+               //发布错误视图
+                __DIR__.'/../Resources/views/errors/'=>resource_path('views/errors'),
+           ],'errorblade');
+
            $this->publishes([
             //发布配置文件
             __DIR__.'/../Config/helper.php'=>config_path('helper.php'),
@@ -71,6 +77,9 @@ class InitServiceProvider extends ServiceProvider
             __DIR__.'/../Publish/Service/Contract'=>app_path('Service/Contract'),
             //发布基础使用文档
             __DIR__.'/../Documents'=>base_path('Documents'),
+
+            //发布错误视图
+            __DIR__.'/../Resources/views/errors/'=>resource_path('views/errors'),
 
            ]);
        }

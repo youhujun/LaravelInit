@@ -24,6 +24,8 @@
 <br/>
 [3.2.3发布使用文档(Publish usage documentation)](#3.2.3)
 <br/>
+[3.2.4发布自定义错误视图(Publish a custom error view)](#3.2.4)
+<br/>
 [3.3命令使用(Command to use)](#3.3)
 <br/>
 [3.3.1快速创建门面代理和门面服务(Quickly create facade agents and facade services)](#3.3.1)
@@ -166,7 +168,11 @@ $ composer require youhujun/laravel-init
 >
 >查看Laravel_Readme文档(See the Laravel_Readme documentation):[传送门(portal)](./Documents/Laravel_Readme.md)
 
+#### <span id='3.2.4'>3.2.4发布自定义错误视图(Publish a custom error view</span[返回(return)](#0)
 
+>```
+>php artisan vendor:publish --tag=errorblade
+>```
 
 ---
 
