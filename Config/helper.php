@@ -4,7 +4,7 @@
  * @Author: YouHuJun
  * @Date: 2020-02-20 11:25:39
  * @LastEditors: YouHuJun
- * @LastEditTime: 2020-02-21 16:07:49
+ * @LastEditTime: 2021-05-23 18:20:49
  */
 
  if(!function_exists('p'))
@@ -90,28 +90,37 @@ if(!function_exists('httpGet'))
 }
 if(!function_exists('httpPost'))
 {
-   /**
-    * @description: 发送post请求
-    * @param {url}请求地址 
-    * @param {data} 请求数据
-    * @return: mixed 请求结果
-    */ 
-   function httpPost($url, $data) 
-   {
-       $ch = curl_init();
-       curl_setopt($ch, CURLOPT_URL,$url);
-       curl_setopt($ch, CURLOPT_HEADER,0);
-       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-       curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-       if(!empty($data)){
-           curl_setopt($ch, CURLOPT_POST, 1);
-           curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-       }
-       $res = curl_exec($ch);
-       curl_close($ch);
-       return $res;
-   }
+      /**
+    *  function  发起curl的post请求
+    *
+    * @param [string] $url 地址
+    * @param array $headers 请求头数组
+    $headers = ['X-TOKEN:'.$this->token,'X-VERSION:1.1.3','Content-Type:application/json','charset=utf-8'];
+    * @param [请求数据] $data
+    * @return //返回结果
+    */
+    function httpPost($url, $headers=[],$data=null)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_HEADER,0);
+        //设置请求头
+        if(is_array($headers) && count($headers) > 0)
+        {
+           curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        }
+        
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        if(!empty($data)){
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        }
+        $res = curl_exec($ch);
+        curl_close($ch);
+        return $res;
+    }
 }
 /**
  * 请求处理结束--------------------------------------------------
@@ -119,23 +128,10 @@ if(!function_exists('httpPost'))
  */
 
 
-/**
- * 处理数据库++++++++++++++++++++++++++++++++++++++++++
- */
+
+
  
-if (!function_exists('q')) {
-    /**
-     * [q 使用DB与指定表建立连接]
-     * @param  String $table_name [数据库表名]
-     * @return [obj]             [返回建立的表连接]
-     */
-    function q(String $table_name)
-    {
-        $query = DB::table($table_name);
- 
-        return $query;
-    }
-}
+
  
 /**
  * 协助处理数组++++++++++++++++++++++++++++
@@ -179,6 +175,35 @@ if (!function_exists('total')) {
 /**
  * 协助处理数组结束--------------------------
  */
+
+
 /**
- * 处理数据库结束-------------------------------------------------------
+ * 处理时间开始
+ */
+
+if(!function_exists('showTime'))
+{
+    /**
+     * Undocumented function 时间戳转字符串
+     *
+     * @param [int] $time 时间戳
+     * @param boolean $bool 布尔 如果为真带时分秒
+     * @return string
+     */
+    function showTime($time,$bool = false)
+    {
+       if($bool)
+       {
+           return date('Y-m-d H:i:s',$time);
+       }
+       else
+       {
+           return date('Y-m-d',$time);
+       }
+       
+    }
+}
+
+/**
+ * 处理时间结束
  */
