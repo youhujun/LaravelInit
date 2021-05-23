@@ -139,9 +139,7 @@ config(['app.timezone' => 'Asia/Shanghai']);
 
 ├──── documents 文档路径  
 │
-│──└── documents/Facade 门面文档路径
-│
-│────└── documents/Facade/Mysql.md  门面文档下的Mysql门面文档
+
 
 ```
 

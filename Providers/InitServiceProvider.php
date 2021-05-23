@@ -5,7 +5,7 @@
  * @Author: YouHuJun
  * @Date: 2020-02-20 10:47:24
  * @LastEditors: YouHuJun
- * @LastEditTime: 2020-02-22 00:11:03
+ * @LastEditTime: 2021-05-23 18:00:52
  */
 
 namespace YouHuJun\LaravelInit\Providers;
@@ -16,8 +16,7 @@ class InitServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        //绑定mysql门面代理和服务
-        $this->app->singleton('Mysql',\YouHuJun\LaravelInit\Service\Facade\Data\MysqlService::class);
+        
     }
 
     public function boot()
@@ -43,7 +42,6 @@ class InitServiceProvider extends ServiceProvider
            $this->publishes([
                __DIR__.'/../Config/helper.php'=>config_path('helper.php'),
 
-               __DIR__.'/../Config/code.php'=>config_path('code.php')
            ],'help');
 
            //单独发布门面,契约合服务层
