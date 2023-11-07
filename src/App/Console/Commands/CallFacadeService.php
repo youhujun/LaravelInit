@@ -4,11 +4,11 @@
  * @version: 
  * @Author: YouHuJun
  * @Date: 2020-02-21 23:58:56
- * @LastEditors: YouHuJun
- * @LastEditTime: 2020-02-22 00:19:50
+ * @LastEditors: youhujun 2900976495@qq.com
+ * @LastEditTime: 2023-11-07 10:48:20
  */
 
-namespace YouHuJun\LaravelInit\Console\Commands;
+namespace YouHuJun\LaravelInit\App\Console\Commands;
 
 use Illuminate\Console\Command;
 

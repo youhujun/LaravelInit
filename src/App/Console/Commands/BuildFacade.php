@@ -4,38 +4,38 @@
  * @version: 1.0.0
  * @Author: YouHuJun
  * @Date: 2020-02-21 17:59:40
- * @LastEditors: YouHuJun
- * @LastEditTime: 2020-02-21 23:51:15
+ * @LastEditors: youhujun 2900976495@qq.com
+ * @LastEditTime: 2023-11-07 10:47:50
  */
 
-namespace YouHuJun\LaravelInit\Console\Commands;
+namespace YouHuJun\LaravelInit\App\Console\Commands;
 
 use Illuminate\Support\Str;
 use Illuminate\Console\GeneratorCommand as Command;
 //use Illuminate\Console\Command;
 
-class BuildFacadeService extends Command
+class BuildFacade extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $name = 'facade:service';
+    protected $name = 'make:facade';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new service class';
+    protected $description = 'Create a new facade class';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'FacadeService';
+    protected $type = 'Facade';
 
     /**
      * Create a new command instance.
@@ -63,7 +63,7 @@ class BuildFacadeService extends Command
     {
         $stub = null;
 
-        $stub = '/stubs/service.stub';
+        $stub = '/stubs/facade.stub';
 
         return __DIR__.$stub;
     }
@@ -84,10 +84,10 @@ class BuildFacadeService extends Command
             return $name;
         }
 
-        $name = str_replace('/', '\\', $name."Service");
+        $name = str_replace('/', '\\', $name);
        
         return $this->qualifyClass(
-            $this->getDefaultNamespace(trim($rootNamespace, '\\')).'\\'.'Service'.'\\'.'Facade'.'\\'.$name
+            $this->getDefaultNamespace(trim($rootNamespace, '\\')).'\\'.'Facade'.'\\'.$name
         );
         
     }

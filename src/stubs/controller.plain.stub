@@ -1,0 +1,27 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+
+use App\Rules\Common\Required;
+use App\Rules\Common\Numeric;
+use App\Rules\Common\CheckString;
+use App\Rules\Common\CheckBetween;
+use App\Rules\Common\CheckArray;
+use App\Rules\Common\FormatTime;
+use App\Rules\Common\CheckUnique;
+use App\Rules\Common\ChineseCodeNumberLine;
+
+use App\Facade\Replace;
+
+class {{ class }} extends Controller
+{
+
+}

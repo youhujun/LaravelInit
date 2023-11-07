@@ -3,8 +3,8 @@
  * @Descripttion: 自定义助手函数
  * @Author: YouHuJun
  * @Date: 2020-02-20 11:25:39
- * @LastEditors: YouHuJun
- * @LastEditTime: 2021-05-23 18:20:49
+ * @LastEditors: youhujun 2900976495@qq.com
+ * @LastEditTime: 2023-11-07 10:55:58
  */
 
  if(!function_exists('p'))

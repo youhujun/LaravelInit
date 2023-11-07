@@ -8,19 +8,45 @@
             "email": "2900976495@qq.com"
         }
     ],
-    "require": {},
+	"keywords": [
+        "laravel",
+        "http",
+        "server",
+        "api"
+    ],
+    "require": {
+		"php": "^8.0.2",
+		"gregwar/captcha": "*",
+		"endroid/qr-code": "*",
+        "youhujun/plunar": "*",
+		"intervention/image": "*",
+        "phpoffice/phpspreadsheet": "*",
+        "predis/predis": "*",
+        "tencentcloud/tencentcloud-sdk-php": "*",
+        "alibabacloud/darabonba-openapi": "*",
+        "alibabacloud/dysmsapi-20170525": "*",
+        "w7corp/easywechat": "*",
+        "qiniu/php-sdk":"*",
+		"wechatpay/wechatpay": "*",
+        "wechatpay/wechatpay-guzzle-middleware": "*"
+	},
     "autoload": {
+		 "files": [
+            "src/config/helper.php"
+        ],
         "psr-4": {
-            "YouHuJun\\LaravelInit\\": ""
+            "YouHuJun\\LaravelInit\\": "src/"
         }
     },
     "extra": {
         "laravel":{
             "providers":[
-                "YouHuJun\\LaravelInit\\Providers\\InitServiceProvider"
+                "YouHuJun\\LaravelInit\\App\\Providers\\InitServiceProvider"
             ],
-            "aliases":{
-                "Mysql":"YouHuJun\\LaravelInit\\Facade\\Data\\Mysql"
+            "aliases":
+			{
+				"Lredis": "Illuminate\\Support\\Facades\\Redis",
+                "Image": "Intervention\\Image\\Facades\\Image"
             }
         }
     }
